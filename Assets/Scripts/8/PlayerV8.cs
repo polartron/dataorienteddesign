@@ -28,7 +28,7 @@ namespace Example8
             
             //Health
             float oldHealth = _healthState.Health;
-            _healthState = Health.Regeneration(_healthState, Time.deltaTime);
+            Health.Regeneration(ref _healthState, Time.deltaTime);
             
             if (oldHealth != _healthState.Health)
             {

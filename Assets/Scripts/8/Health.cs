@@ -26,18 +26,16 @@ namespace Example8
 
     public static class Health
     {
-        public static HealthState Regeneration(HealthState state, float deltaTime)
+        public static void Regeneration(ref HealthState state, float deltaTime)
         {
             if (state.Health <= 0)
-                return state;
+                return;
 
             if (state.Regeneration > 0)
             {
                 state.Health += state.Regeneration * deltaTime;
                 state.Health = Mathf.Clamp(state.Health, 0, state.MaxHealth);
             }
-
-            return state;
         }
     }
 }

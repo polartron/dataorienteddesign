@@ -26,7 +26,7 @@ namespace Example9
             
             //Move
             state.Position += state.Velocity;
-            state = CheckGround(state);
+            CheckGround(ref state);
         }
 
         public static void ApplyGravity(ref Vector3 velocity, float gravity, float deltaTime)
@@ -34,15 +34,13 @@ namespace Example9
             velocity.y -= gravity * deltaTime;
         }
         
-        public static MovementState CheckGround(MovementState state)
+        public static void CheckGround(ref MovementState state)
         {
             if (state.Position.y < 0f)
             {
                 state.IsGrounded = true;
                 state.Position.y = 0f;
             }
-
-            return state;
         }
 
         public static void Jump(ref MovementState state, float jumpPower)
